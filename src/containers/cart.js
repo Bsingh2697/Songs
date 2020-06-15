@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { View, Text, TouchableOpacity, TextInput, StyleSheet, FlatList,ActivityIndicator } from 'react-native'
+import { View, Text, TouchableOpacity, TextInput, StyleSheet, FlatList,ActivityIndicator, ScrollView } from 'react-native'
 import { navigationConstants } from '../utils/constants/navigationConstants';
 import { colors } from './../utils/constants/colors';
 import { globalStyles } from './../utils/globalStyles';
@@ -19,7 +19,7 @@ export class cart extends Component {
 
         return (
             <MainHeader>
-            <View style={styles.body}>
+            <ScrollView contentContainerStyle={styles.body}>
                     <View>
                         <Text style={globalStyles.mainhead}>{stringConstants.cart} : {this.props.cartData.length} </Text>
                         <FlatList
@@ -33,7 +33,7 @@ export class cart extends Component {
                             ItemSeparatorComponent={()=>(<View style={globalStyles.separator}></View>)}
                         />
                     </View>
-            </View>
+            </ScrollView>
             </MainHeader>
         )
     }
@@ -42,8 +42,8 @@ export class cart extends Component {
 const styles = StyleSheet.create({
     body:{
         backgroundColor:colors.theme_col_brownShade,
-        flex:1,
-        paddingTop:50,
+        flexGrow:1,
+        paddingVertical:50,
         paddingHorizontal:20
     },
 })

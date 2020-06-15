@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { View, Text, TouchableOpacity, TextInput, StyleSheet, FlatList,ActivityIndicator } from 'react-native'
+import { View, Text, TouchableOpacity, TextInput, StyleSheet, FlatList,ActivityIndicator,ScrollView } from 'react-native'
 import { navigationConstants } from '../utils/constants/navigationConstants';
 import { colors } from './../utils/constants/colors';
 import { globalStyles } from './../utils/globalStyles';
@@ -14,7 +14,7 @@ export class favourite extends Component {
     render() {
         return (
             <MainHeader>
-            <View style={styles.body}>
+            <ScrollView contentContainerStyle={styles.body}>
                 <View>
                     <Text style = {globalStyles.mainhead}>{stringConstants.favourites} : {this.props.favourite.length}</Text>
                     <FlatList
@@ -28,7 +28,7 @@ export class favourite extends Component {
                             ItemSeparatorComponent={()=>(<View style={globalStyles.separator}></View>)}
                     />
                 </View>
-            </View>
+            </ScrollView>
             </MainHeader>
         )
     }
@@ -43,8 +43,8 @@ const mapStateToProps = (state) => {
 const styles = StyleSheet.create({
     body:{
         backgroundColor:colors.theme_col_brownShade,
-        flex:1,
-        paddingTop:20,
+        flexGrow:1,
+        paddingVertical:20,
         paddingHorizontal:20
     },
 })

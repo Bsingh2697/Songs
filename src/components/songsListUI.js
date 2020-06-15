@@ -88,7 +88,7 @@ export class SongsListUI extends Component {
                             <TouchableOpacity 
                              onPress={()=> this.props.navigation.navigate(navigationConstants.albumDetails,{item:item.album.id})}
                              >
-                                <Text style={[globalStyles.medium14Purple,{width:150}]} numberOfLines={1} >  {stringConstants.album} : {item.album.title}</Text>
+                                <Text style={[globalStyles.medium14Purple,{width:150}]} numberOfLines={1}>  {stringConstants.album} : {item.album.title}</Text>
                             </TouchableOpacity>
                         </View>
 
@@ -99,7 +99,7 @@ export class SongsListUI extends Component {
                             <TouchableOpacity
                                 onPress={()=> this.props.navigation.navigate(navigationConstants.artistDetails,{item:item.artist.id})}
                             >
-                                <Text style={[globalStyles.medium14Purple,{width:150}]} style={globalStyles.medium14Purple} numberOfLines={1}>  {stringConstants.artist} : {item.artist.name}</Text>
+                                <Text style={[globalStyles.medium14Purple,{width:150}]}  numberOfLines={1}>  {stringConstants.artist} : {item.artist.name}</Text>
                             </TouchableOpacity>
                         </View>
                         {
