@@ -15,7 +15,11 @@ import { favActionCreators } from './../redux/actions/favAction';
 import MainHeader from '../components/mainHeader';
 import { images } from '../utils/constants/assets';
 import { appConstants } from './../utils/constants/appConstants';
+// import SoundPlayer from 'react-native-sound-player'
+import Sound from 'react-native-sound';
 
+
+var music = null
 export class SongsListing extends Component {
 
     constructor(props){
@@ -30,7 +34,9 @@ export class SongsListing extends Component {
         nextUrl : null,
         data :  null,
         loader : true,
-        isLoading : true
+        isLoading : true,
+        playpause:true,
+        first:true
     }
 
     componentDidMount(){
@@ -75,8 +81,6 @@ export class SongsListing extends Component {
     }
 
     handleParam = (val) => {
-        
-        let timer
         let params = this.state.params
         params.q = val
         this.setState({
@@ -90,6 +94,28 @@ export class SongsListing extends Component {
                 <ActivityIndicator animating size='large'/>
             </View>
         )
+    }
+
+    playAudioHandler=(val)=>{
+        console.log("Gonna Play")
+        console.log(val)
+            !this.state.first 
+            ? music.stop()
+            : null
+            music = new Sound(val,null,(e)=>{
+            if(e){
+                console.log(e)
+            }else{
+                music.play()
+                this.setState({playpause:!this.state.playpause,first:false})
+            }
+        })
+        
+    }
+    playpauseHandler=()=>{
+        !this.state.first 
+            ? music.stop()
+            : null
     }
 
     render() {
@@ -125,11 +151,15 @@ export class SongsListing extends Component {
                     </TouchableOpacity>
                     
                     {this.state.loader
-                    ?<ActivityIndicator size="large" animating style={{top:50}}/>
+                    ?<ActivityIndicator size="large" animating style={styles.indicatorSt}/>
                     :<FlatList
                         data={this.state.data}
                         renderItem={({item})=> (
-                            <SongsListUI key = {item.id} item = {item}/>
+                            <SongsListUI 
+                             playAudio={this.playAudioHandler}
+                             playPause = { this.playpauseHandler}
+                             key = {item.id} 
+                             item = {item}/>
                         )}
                         onEndReached={()=>this.testMore()}
                         onEndReachedThreshold={0.5}
@@ -184,6 +214,9 @@ const styles = StyleSheet.create({
     },
     values:{
         flexDirection:'row'
+    },
+    indicatorSt:{
+        top:50
     }
 })
 

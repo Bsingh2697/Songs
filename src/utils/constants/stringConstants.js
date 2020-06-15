@@ -27,4 +27,6 @@ export const stringConstants = {
     noMusicFound:"No Music Found",
     myCart:"My Cart",
     myFavourites:'My Favourites',
+    play:"Play",
+    stop:"Stop",
 }

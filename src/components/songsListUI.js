@@ -15,6 +15,18 @@ import { appConstants } from './../utils/constants/appConstants';
 
 export class SongsListUI extends Component {
 
+    state={
+        playpause:false
+    }
+
+    playPauseHandler=()=>{
+        this.props.playPause()
+    }
+
+    playAudio = () => {
+        this.props.playAudio(`${this.props.item.preview}`)
+    }
+
     addToCartHandler = () => {
         let check = this.props.cartData.findIndex( item => {
             return item.id === this.props.item.id
@@ -62,7 +74,6 @@ export class SongsListUI extends Component {
 
     render() {
         const {item} = this.props
-        
         return (
             <View style = {styles.body}>
                 <View flex={1.3}>
@@ -91,6 +102,18 @@ export class SongsListUI extends Component {
                                 <Text style={[globalStyles.medium14Purple,{width:150}]} style={globalStyles.medium14Purple} numberOfLines={1}>  {stringConstants.artist} : {item.artist.name}</Text>
                             </TouchableOpacity>
                         </View>
+                        {
+                            (this.props.removeCart || this.props.removeFav) 
+                            ? null
+                            :<View style={styles.playPause}>
+                                <TouchableOpacity style={styles.playpausebut} onPress={()=>this.playAudio()}><Text>
+                                    {stringConstants.play}
+                                </Text></TouchableOpacity>
+                                <TouchableOpacity onPress={()=>this.playPauseHandler()}><Text>
+                                    {stringConstants.stop}
+                                </Text></TouchableOpacity>
+                             </View>
+                        }
                 </View>
                 <View flex={0.7} style={styles.buttonsView}>
                     {
@@ -150,6 +173,14 @@ const styles = StyleSheet.create({
     nameSt:{
         width:100,
         marginEnd:20,
+    },
+    playPause:{
+        flexDirection:"row",
+        marginBottom:20
+    },
+    playpausebut:{
+        marginEnd:20,
+        marginStart:20
     }
 })
 
