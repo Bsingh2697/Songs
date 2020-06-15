@@ -29,7 +29,8 @@ export class SongsListing extends Component {
         },
         nextUrl : null,
         data :  null,
-        loader : true
+        loader : true,
+        isLoading : true
     }
 
     componentDidMount(){
@@ -55,7 +56,8 @@ export class SongsListing extends Component {
             this.setState({
                 data : response.data.data,
                 nextUrl : `?${x[1]}`,
-                loader:false
+                loader:false,
+                isLoading:false
             })
             
         })
@@ -136,7 +138,8 @@ export class SongsListing extends Component {
                         ItemSeparatorComponent={()=>(<View style={globalStyles.separator}></View>)}
                         ListFooterComponent= {this.renderFooter}
                         keyExtractor={(item)=>item.id}
-                        // onRefresh={()=>this.fetchSongs()}
+                        onRefresh={()=>this.fetchSongs()}
+                        refreshing={this.state.isLoading}
                         />
                 }
                 </View>
