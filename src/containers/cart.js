@@ -16,10 +16,12 @@ export class cart extends Component {
     render() {
 
         return (
-            <MainHeader>
+            <MainHeader
+                header={stringConstants.cart}
+            >
             <ScrollView contentContainerStyle={styles.body}>
                     <View>
-                        <Text style={globalStyles.mainhead}>{stringConstants.cart} : {this.props.cartData.length} </Text>
+                        <Text style={globalStyles.mainhead}>{stringConstants.total} : {this.props.cartData.length} </Text>
                         <FlatList
                             data = {this.props.cartData}
                             renderItem={({item})=>(

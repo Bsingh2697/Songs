@@ -29,4 +29,5 @@ export const stringConstants = {
     myFavourites:'My Favourites',
     play:"Play",
     stop:"Stop",
+    total:'Total'
 }

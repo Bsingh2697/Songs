@@ -11,10 +11,12 @@ import MainHeader from '../components/mainHeader';
 export class favourite extends Component {
     render() {
         return (
-            <MainHeader>
+            <MainHeader
+                header={stringConstants.favourites}
+            >
             <ScrollView contentContainerStyle={styles.body}>
                 <View>
-                    <Text style = {globalStyles.mainhead}>{stringConstants.favourites} : {this.props.favourite.length}</Text>
+                    <Text style = {globalStyles.mainhead}>{stringConstants.total} : {this.props.favourite.length}</Text>
                     <FlatList
                             data = {this.props.favourite}
                             renderItem={({item})=>(

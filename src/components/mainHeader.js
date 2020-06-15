@@ -3,6 +3,7 @@ import { View, Text, Image, StyleSheet,TouchableOpacity } from 'react-native'
 import { images } from '../utils/constants/assets';
 import { withNavigation } from 'react-navigation';
 import { colors } from './../utils/constants/colors';
+import { globalStyles } from './../utils/globalStyles';
 
 class MainHeader extends Component {
     constructor(props){
@@ -13,8 +14,9 @@ class MainHeader extends Component {
         return (
             <View flex={1}  style={styles.headerBody}>
                 <View>
-                    <TouchableOpacity onPress={()=>this.props.navigation.goBack()}>
-                        <Image style= {styles.imageStyle} source={images.backArrow}/>
+                    <TouchableOpacity style={styles.headerSt} onPress={()=>this.props.navigation.goBack()}>
+                        <Image source={images.backArrow}/>
+                        <Text style={[globalStyles.boldyellow20,{marginStart:20}]}>{this.props.header}</Text>
                     </TouchableOpacity>
                 </View>
                 <View style={styles.childView}>
@@ -35,6 +37,12 @@ const styles= StyleSheet.create({
     imageStyle:{
         marginTop:30,
         marginStart:20
+    },
+    headerSt:{
+        flexDirection:"row",
+        alignItems:'center',
+        marginStart:20,
+        marginTop:30
     }
 })
 export default withNavigation(MainHeader)
