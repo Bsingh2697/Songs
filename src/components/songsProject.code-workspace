@@ -1,0 +1,19 @@
+{
+	"folders": [
+		{
+			"path": "..\\.."
+		},
+		{
+			"path": "..\\..\\..\\..\\Users\\acer\\Documents\\ReactWorkspace\\redux-demo"
+		},
+		{
+			"path": "..\\..\\..\\..\\JSPRAC"
+		},
+		{
+			"path": "..\\..\\..\\..\\asyncPrac"
+		}
+	],
+	"settings": {
+		"liveServer.settings.multiRootWorkspaceName": "JSPRAC"
+	}
+}
