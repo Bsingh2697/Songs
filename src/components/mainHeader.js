@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { View, Text, Image, StyleSheet,TouchableOpacity } from 'react-native'
 import { images } from '../utils/constants/assets';
 import { withNavigation } from 'react-navigation';
+import { colors } from './../utils/constants/colors';
 
 class MainHeader extends Component {
     constructor(props){
@@ -25,14 +26,14 @@ class MainHeader extends Component {
 }
 const styles= StyleSheet.create({
     headerBody:{
-        backgroundColor:'transparent',
+        backgroundColor:colors.theme_col_brownShade,
     },
     childView:{
         flex:1,
         paddingTop:20
     },
     imageStyle:{
-        marginVertical:20,
+        marginTop:30,
         marginStart:20
     }
 })

@@ -1,11 +1,9 @@
 import React, { Component } from 'react'
 import { View, Text, TouchableOpacity, TextInput, StyleSheet, FlatList,ActivityIndicator,ScrollView } from 'react-native'
-import { navigationConstants } from '../utils/constants/navigationConstants';
 import { colors } from './../utils/constants/colors';
 import { globalStyles } from './../utils/globalStyles';
 import { fonts } from '../utils/constants/fonts';
 import { stringConstants } from './../utils/constants/stringConstants';
-import { fetchAllSongs, fetchAlbumData, fetchArtistData, allSongsFlatlist } from './../network/requests';
 import SongsListUI from '../components/songsListUI';
 import { connect } from 'react-redux';
 import MainHeader from '../components/mainHeader';
@@ -44,7 +42,7 @@ const styles = StyleSheet.create({
     body:{
         backgroundColor:colors.theme_col_brownShade,
         flexGrow:1,
-        paddingVertical:20,
+        paddingBottom:50,
         paddingHorizontal:20
     },
 })

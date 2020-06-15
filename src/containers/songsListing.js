@@ -5,14 +5,13 @@ import { colors } from './../utils/constants/colors';
 import { globalStyles } from './../utils/globalStyles';
 import { fonts } from '../utils/constants/fonts';
 import { stringConstants } from './../utils/constants/stringConstants';
-import { fetchAllSongs, fetchAlbumData, fetchArtistData, allSongsFlatlist } from './../network/requests';
+import { fetchAllSongs, allSongsFlatlist } from './../network/requests';
 import SongsListUI from '../components/songsListUI';
 import { connect } from 'react-redux';
 import { debounce } from 'lodash'
 import  AsyncStorage  from '@react-native-community/async-storage';
 import { cartActionCreators } from '../redux/actions/cartAction';
 import { favActionCreators } from './../redux/actions/favAction';
-import MainHeader from '../components/mainHeader';
 import { images } from '../utils/constants/assets';
 import { appConstants } from './../utils/constants/appConstants';
 // import SoundPlayer from 'react-native-sound-player'
