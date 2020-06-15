@@ -106,10 +106,12 @@ export class SongsListUI extends Component {
                             (this.props.removeCart || this.props.removeFav) 
                             ? null
                             :<View style={styles.playPause}>
-                                <TouchableOpacity style={styles.playpausebut} onPress={()=>this.playAudio()}><Text>
+                                <TouchableOpacity style={styles.playpausebut} onPress={()=>this.playAudio()}>
+                                    <Text style={globalStyles.medium14Purple}>
                                     {stringConstants.play}
                                 </Text></TouchableOpacity>
-                                <TouchableOpacity onPress={()=>this.playPauseHandler()}><Text>
+                                <TouchableOpacity onPress={()=>this.playPauseHandler()}>
+                                    <Text style={globalStyles.medium14Purple}>
                                     {stringConstants.stop}
                                 </Text></TouchableOpacity>
                              </View>
