@@ -9,6 +9,7 @@ import moment from 'moment'
 import { fetchArtistData } from './../network/requests';
 import { connect } from 'react-redux';
 import MainHeader from '../components/mainHeader';
+import { images } from './../utils/constants/assets';
 
 
 export class artistDetails extends Component {
@@ -39,6 +40,12 @@ export class artistDetails extends Component {
                 ? <ActivityIndicator style={globalStyles.indicator} animating size="large"/>
                 :<MainHeader> 
                 <ScrollView contentContainerStyle={styles.body}>
+                        <View style={styles.cartView}>
+                                <TouchableOpacity style={styles.values} onPress={()=> this.props.navigation.navigate(navigationConstants.cart)}>
+                                    <Image  resizeMode="contain" style={styles.hambur} source={images.cart}/>
+                                    <Text> : {this.props.cart.length}</Text>
+                                </TouchableOpacity>
+                        </View>
                         <View style={globalStyles.imageHolder}>
                             <Image style={globalStyles.imageStyleLarge} source={{uri:artistdata.picture_big}}/>
                             <Text style={[globalStyles.boldyellow20,{alignSelf:'center'}]}>
@@ -71,7 +78,29 @@ const styles = StyleSheet.create({
         },
     details:{
             marginTop:100
-    }
+    },
+    values:{
+        flexDirection:'row',
+        alignSelf:'flex-end',
+        paddingEnd:30
+
+    },
+    cartView:{
+        width:'100%',
+        height:100,
+        alignItems:'flex-end',
+    },
+    hambur:{
+        height:30,
+        width:30
+    },
 })
 
-export default connect(null,null)(artistDetails)
+const mapStateToProps = (state) => {
+    return {
+        cart : state.cart.cart,
+        fav : state.favourite.favourite
+    }
+}
+
+export default connect(mapStateToProps,null)(artistDetails)

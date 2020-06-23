@@ -9,6 +9,7 @@ import moment from 'moment'
 import { fetchAlbumData } from './../network/requests';
 import { connect } from 'react-redux';
 import MainHeader from '../components/mainHeader';
+import { images } from './../utils/constants/assets';
 
 export class albumDetails extends Component {
     constructor(props){
@@ -44,6 +45,12 @@ export class albumDetails extends Component {
                 ? <ActivityIndicator animating size="large" style={globalStyles.indicator}/>
                 :<MainHeader>
                 <ScrollView contentContainerStyle={styles.body}>
+                    <View style={styles.cartView}>
+                        <TouchableOpacity style={styles.values} onPress={()=> this.props.navigation.navigate(navigationConstants.cart)}>
+                            <Image  resizeMode="contain" style={styles.hambur} source={images.cart}/>
+                            <Text> : {this.props.cart.length}</Text>
+                        </TouchableOpacity>
+                    </View>
                     <View style={globalStyles.imageHolder}>
                         <Image style={globalStyles.imageStyleLarge} resizeMode="cover" source={{uri: albumData.cover_xl}}/>
                         <Text style={[globalStyles.boldyellow20,{alignSelf:'center'}]}>{albumData.title}</Text>
@@ -87,20 +94,41 @@ const styles = StyleSheet.create({
     body:{
         backgroundColor:colors.theme_col_brownShade,
         flexGrow:1,
-        paddingTop:150,
-        alignItems:'center',
-        justifyContent:'center'
+        paddingTop:0,
+        justifyContent:'center',
+        width:'100%'
     },
     artistDetails:{
         flexDirection:'row'
     },
     details:{
-        marginTop:50
-    }
+        marginTop:50,
+        alignItems:'center'
+    },
+    hambur:{
+        height:30,
+        width:30
+    },
+    logoStyle:{
+        height:60
+    },
+    values:{
+        flexDirection:'row',
+        alignSelf:'flex-end',
+        paddingEnd:30
+    },
+    cartView:{
+        width:'100%',
+        height:100,
+        alignItems:'flex-end',
+    },
 })
-  
-const mapDispatchToProps = (dispatch) => {
 
+const mapStateToProps = (state) => {
+    return {
+        cart : state.cart.cart,
+        fav : state.favourite.favourite
+    }
 }
 
-export default connect(null,null)(albumDetails)
+export default connect(mapStateToProps,null)(albumDetails)

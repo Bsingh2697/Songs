@@ -11,6 +11,12 @@
 		},
 		{
 			"path": "..\\..\\..\\..\\asyncPrac"
+		},
+		{
+			"path": "..\\..\\..\\TestApi"
+		},
+		{
+			"path": "..\\..\\..\\..\\reactnativeanimations"
 		}
 	],
 	"settings": {
